@@ -193,7 +193,7 @@
   const ipt = document.querySelector('#search-input')
   const btn = document.querySelector('#search-btn')
   const layer = document.querySelector('#search-layer')
-  const posts = JSON.parse(`[{"title":"润天暑期夏令营7.9","path":"2023/07/09/2023润田暑假夏令营2023.7.9/"},{"title":"Hello World","path":"2023/05/20/hello-world/"},{"title":"python学习（第1期）核心笔记","path":"2023/09/13/python（第1期）核心笔记/"},{"title":"我的个人简介","path":"2023/05/20/个人简介/"}]`)
+  const posts = JSON.parse(`[{"title":"润天暑期夏令营7.9","path":"2023/07/09/2023润田暑假夏令营2023.7.9/"},{"title":"XSS蓝莲花实操--润天夏令营2023","path":"2023/09/13/XSS蓝莲花实操--润天夏令营/"},{"title":"Hello World","path":"2023/05/20/hello-world/"},{"title":"python学习（第1期）核心笔记","path":"2023/09/13/python（第1期）核心笔记/"},{"title":"我的个人简介","path":"2023/05/20/个人简介/"}]`)
   ipt.addEventListener('keyup', e => {
     if (e.key === 'Enter') {
       handleSearch()
@@ -327,7 +327,7 @@
       </h5>
       <p class="main-left--subtitle">
         <span>文章数目：</span>
-        <span>4 篇</span>
+        <span>5 篇</span>
       </p>
       <p class="main-left--subtitle">
         <span>最近动态：</span>
@@ -357,7 +357,7 @@
           <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
         </div>
         <div class="index-article--content">
-          <a href="/2023/09/13/python%EF%BC%88%E7%AC%AC1%E6%9C%9F%EF%BC%89%E6%A0%B8%E5%BF%83%E7%AC%94%E8%AE%B0/">python学习（第1期）核心笔记 </a>
+          <a href="/2023/09/13/XSS%E8%93%9D%E8%8E%B2%E8%8A%B1%E5%AE%9E%E6%93%8D--%E6%B6%A6%E5%A4%A9%E5%A4%8F%E4%BB%A4%E8%90%A5/">XSS蓝莲花实操--润天夏令营2023 </a>
           <div>
             
             
@@ -369,12 +369,27 @@
   </div>
   <div class="index-center">
     
+      <div class="index-article">
+        <!-- <img class="index-article--cover" data-cover="" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
+        </div>
+        <div class="index-article--content">
+          <a href="/2023/09/13/python%EF%BC%88%E7%AC%AC1%E6%9C%9F%EF%BC%89%E6%A0%B8%E5%BF%83%E7%AC%94%E8%AE%B0/">python学习（第1期）核心笔记 </a>
+          <div>
+            
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
+    
   </div>
   <div class="index-right">
     <div class="index-right-wrapper">
       
       
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">2023年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">2023年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">2023年05月</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">2023年09月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">2023年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">2023年05月</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 </div>
