@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的技术与生活——categories | luotianchao</title>
+  <title>我的技术与生活——润田暑期夏令营7.9 | luotianchao</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
 
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <script>
-    document.title = `我的技术与生活——categories`
+    document.title = `我的技术与生活——润田暑期夏令营7.9`
   </script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -347,12 +347,165 @@
       <div id="main-container" class="main-container">
 
 
-  <div class="categories">
-  <h2 class="categories-title">小站分类</h2>
-  <div class="categories-list">
+  <style>
+pre::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+  background-color:#F5F5F5;
+}
+/*定义滚动条轨道
+内阴影+圆角*/
+pre::-webkit-scrollbar-track {
+  background-color:#F5F5F5;
+}
+/*定义滑块
+内阴影+圆角*/
+pre::-webkit-scrollbar-thumb {
+  background-color: rgb(69, 83, 100);
+}
+
+pre:active {
+  background-color: rgb(81, 95, 116);
+}
+</style>
+
+<div class="article-container">
+  <div class="article">
+    <h1 class="article-title">润田暑期夏令营7.9</h1>
+    <div class="article-info">
+      <div class="article-info--item">
+        <div class="article-info--info">
+          
+          <div class="article-info--categories">
+            <span>分类：</span>
+            
+          </div>
+          
+          
+          <div class="article-info--tags">
+            <span>标签：</span>
+            
+          </div>
+          
+          <p class="article-info--date">日期：2023-07-09 14:00:00</p>
+        </div>
+        <img src="/imgs/default-cover.webp" alt="" class="article-cover">
+      </div>
+    </div>
+    <article class="article-content">
+      <p>WAF：<br>网站应用级入侵防御系统（硬件、软件产品）<br>网页安全防护第一道防线。<br>功能：<br>1.记录登录操作<br>2.对安全策略进行操作<br>分类：硬件WAF，软件WAF，云WAF</p>
+<p>搭建长亭WAF<br>1.Linux操作系统<br>2.docker环境<br>（1）准备工作<br>ip addr&#x2F;&#x2F;查看接口ip<br>systemctl stop firewalld.service&#x2F;&#x2F;关闭防火墙<br>systemctl disable firewalld.service&#x2F;&#x2F;关闭防火墙的开机自启动<br>finalshell软件安装<br>（2）远程链接centos<br>SSH链接，主机地址：192.168.197.128<br>一键部署<br>（3）安装Docker环境<br>1.ping baidu.com &#x2F;&#x2F;保证虚拟机可以访问外网，按下ctrl+c停止<br>2.一键部署<br><code>cd /etc/yum.repos.d/  //进入文件夹，再敲ll查看</code><br><code>sed命令//修改yum原仓库内容以便能访问国外</code><br><code>3.yum clean all //刷新缓存</code><br><code>4.yum list all  //把仓库所有文件列出</code><br><code>5.cd //回到桌面</code><br><code>6.yun remove docker......//防止原来有docker，保证环境干净</code><br><code>7.dnf install -y......//安装docker所需的依赖</code><br><code>8.yum-config-manager -add-repo.......//从国外将docker安装包下载回来</code><br><code>9.ctrl+l清除界面（*）</code><br><code>10.dnf -y install docker-ce......//安装docker</code><br><code>11.dnf remove -y podman//移除podman</code><br><code>12.dnf -y install --allowerasing docker-ce  // 继续安装（此时会报错）</code><br><code>13.</code><br><code>systemctl start docker.service//启动docker</code><br><code>systemctl enable docker.service//设置开机自启动</code><br><code>systemctl status docker.service//判断开机状况</code><br><code>3.在docker环境中雷池waf</code><br>4.将需要保护的网站挂进WAF&#96;</p>
+<p>【附件】上述环境配置详细代码：<br>2、docker环境<br>    容器(轻量化、可靠性较高)<br>（1）准备工作<br>    ip addr		&#x2F;&#x2F;查看接口IP地址<br>    systemctl stop firewalld.service 	&#x2F;&#x2F;关闭防火墙服务<br>    systemctl disable firewalld.service &#x2F;&#x2F;关闭防火墙的开机自启<br>（2）远程连接到Centos8<br>    根据IP地址远程SSH连接到Centos8<br>    保存秘钥<br>    输入用户名和密码<br>（3）安装Dcoker环境<br>    ping baidu.com		&#x2F;&#x2F;保证虚拟机能访问外网，按ctrl+c停止ping<br>    cd &#x2F;etc&#x2F;yum.repos.d&#x2F;	&#x2F;&#x2F;进入yum源仓库</p>
+<pre><code>sed -i -e &quot;s|mirrorlist=|#mirrorlist=|g&quot; /etc/yum.repos.d/CentOS-*
+sed -i -e &quot;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&quot; /etc/yum.repos.d/CentOS-*
+//修改yum仓库内容，以便能访问到国外
+
+yum clean all	//清除仓库缓存
+yum list all	//列出仓库所有安装包
+
+cd /root 	//回到桌面
+
+yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+//清除所有docker的环境
+
+dnf install -y yum-utils device-mapper-persistent-data lvm2
+//安装docker所需依赖
+
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+//下载docker安装包
+
+dnf -y install docker-ce docker-ce-cli containerd.io
+//安装docer
+
+dnf remove -y podman
+//移除podman
+
+dnf -y install --allowerasing docker-ce
+//继续安装docker
+
+systemctl start docker.service
+systemctl enable docker.service 
+systemctl start\stop\enable\disable\restart\status
+</code></pre>
+<p>配置WAF环境<br>1.上传文件 image.tar.gz(运行的底层逻辑镜像）<br>2.cat image.tar.gz | gzip -d | docker laod &#x2F;&#x2F;加载镜像<br>3.docker ps -a&#x2F;&#x2F;查看有无容器在运行<br>4.mkdir safeline&#x2F;&#x2F;创建文件夹<br>5.cd safeline&#x2F;&#x2F;查看文件夹<br>6.上传<br>（ll -a&#x2F;&#x2F;查看文件夹文件包含隐藏文件）</p>
+<p>echo “SAFELINE_DIR&#x3D;$safeline_path” &gt;&gt; .env<br>echo “IMAGE_TAG&#x3D;latest” &gt;&gt; .env<br>echo “MGT_PORT&#x3D;9443” &gt;&gt; .env<br>echo “POSTGRES_PASSWORD&#x3D;$(LC_ALL&#x3D;C tr -dc A-Za-z0-9 &lt;&#x2F;dev&#x2F;urandom | head -c32)” &gt;&gt; .env<br>echo “REDIS_PASSWORD&#x3D;$(LC_ALL&#x3D;C tr -dc A-Za-z0-9 &lt;&#x2F;dev&#x2F;urandom | head -c 32)”&gt;&gt; .env<br>echo “SUBNET_PREFIX&#x3D;169.254.0” &gt;&gt; .env</p>
+
+    </article>
+    
+    <div class="read-nums">
+      <!-- id 将作为查询条件 -->
+      <span id="2023/07/09/2023润田暑假夏令营2023.7.9/" class="leancloud_visitors" data-flag-title="Your Article Title">
+        <em class="post-meta-item-text">浏览量</em>
+        <i class="leancloud-visitors-count"></i>
+      </span>
+    </div>
+    <div class="comments-intro">
+      <h2>评论区</h2>
+      <p>欢迎你留下宝贵的意见，昵称输入QQ号会显示QQ头像哦~</p>
+    </div>
+    <div id="vcomments" class="vcomments"></div>
     
   </div>
+  <div class="article-catelogue">
+    <div class="article-catelogue--wrapper">
+      <div class="catelogue catelogue-1">
+        <h3>目录</h3>
+        
+      </div>
+      
+        <div class="catelogue catelogue-2">
+           
+          
+            <p>
+              <span>下一篇</span>
+              <a href="/2023/05/20/hello-world/">Hello World</a>
+            </p>
+          
+        </div>
+      
+    </div>
+  </div>
 </div>
+
+<script src="http://cdn.yangxiang.cc/prism.js"></script>
+
+<script>
+  // var定义，避免pjax重新进来造成的重复声明错误
+  var config = JSON.parse('{"enable":true,"appId":"Pf8zCXGEH1qsprnWfikVVujL-gzGzoHsz","appKey":"qOqoiUHhH1TGtLRUYURkLRQX","placeholder":"请留下你宝贵的意见吧~","meta":["nick"],"recordIP":true,"visitor":true,"enableQQ":true}')
+  new Valine({
+    el: '#vcomments',
+    appId: config.appId,
+    appKey: config.appKey,
+    placeholder: config.placeholder,
+    meta: config.meta,
+    recordIP: config.recordIP,
+    visitor: config.visitor,
+    enableQQ: config.enableQQ,
+    path: '2023/07/09/2023润田暑假夏令营2023.7.9/'
+  })
+</script>
+
+
+<script>
+  $(document).on('pjax:complete', function() {
+    const tocs = document.querySelector('.toc')
+    const links = tocs ? tocs.querySelectorAll('a') : []
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        const href = decodeURIComponent(e.href)
+        href.search(/#(.*)/)
+        const id = RegExp.$1
+        const target = document.querySelector('#' + id)
+        const top = target.offsetTop
+        document.documentElement.scrollTo({
+          top: top - 100,
+          behavior: 'smooth'
+        })
+        e.preventDefault()
+      })
+    })
+  })
+</script> 
 
 </div>
       <div class="main-right-wrapper"><div class="main-right">
