@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的技术与生活——润天暑期夏令营7.9 | luotianchao</title>
+  <title>我的技术与生活——数据库系统概述笔记 | luotianchao</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
 
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <script>
-    document.title = `我的技术与生活——润天暑期夏令营7.9`
+    document.title = `我的技术与生活——数据库系统概述笔记`
   </script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -371,7 +371,7 @@ pre:active {
 
 <div class="article-container">
   <div class="article">
-    <h1 class="article-title">润天暑期夏令营7.9</h1>
+    <h1 class="article-title">数据库系统概述笔记</h1>
     <div class="article-info">
       <div class="article-info--item">
         <div class="article-info--info">
@@ -387,54 +387,174 @@ pre:active {
             
           </div>
           
-          <p class="article-info--date">日期：2023-07-09 14:00:00</p>
+          <p class="article-info--date">日期：2023-09-24 15:03:11</p>
         </div>
         <img src="/imgs/default-cover.webp" alt="" class="article-cover">
       </div>
     </div>
     <article class="article-content">
-      <p>WAF：<br>网站应用级入侵防御系统（硬件、软件产品）<br>网页安全防护第一道防线。<br>功能：<br>1.记录登录操作<br>2.对安全策略进行操作<br>分类：硬件WAF，软件WAF，云WAF</p>
-<p>搭建长亭WAF<br>1.Linux操作系统<br>2.docker环境<br>（1）准备工作<br>ip addr&#x2F;&#x2F;查看接口ip<br>systemctl stop firewalld.service&#x2F;&#x2F;关闭防火墙<br>systemctl disable firewalld.service&#x2F;&#x2F;关闭防火墙的开机自启动<br>finalshell软件安装<br>（2）远程链接centos<br>SSH链接，主机地址：192.168.197.128<br>一键部署<br>（3）安装Docker环境<br>1.ping baidu.com &#x2F;&#x2F;保证虚拟机可以访问外网，按下ctrl+c停止<br>2.一键部署<br><code>cd /etc/yum.repos.d/  //进入文件夹，再敲ll查看</code><br><code>sed命令//修改yum原仓库内容以便能访问国外</code><br><code>3.yum clean all //刷新缓存</code><br><code>4.yum list all  //把仓库所有文件列出</code><br><code>5.cd //回到桌面</code><br><code>6.yun remove docker......//防止原来有docker，保证环境干净</code><br><code>7.dnf install -y......//安装docker所需的依赖</code><br><code>8.yum-config-manager -add-repo.......//从国外将docker安装包下载回来</code><br><code>9.ctrl+l清除界面（*）</code><br><code>10.dnf -y install docker-ce......//安装docker</code><br><code>11.dnf remove -y podman//移除podman</code><br><code>12.dnf -y install --allowerasing docker-ce  // 继续安装（此时会报错）</code><br><code>13.</code><br><code>systemctl start docker.service//启动docker</code><br><code>systemctl enable docker.service//设置开机自启动</code><br><code>systemctl status docker.service//判断开机状况</code><br><code>3.在docker环境中雷池waf</code><br>4.将需要保护的网站挂进WAF&#96;</p>
-<p>【附件】上述环境配置详细代码：<br>2、docker环境<br>    容器(轻量化、可靠性较高)<br>（1）准备工作<br>    ip addr		&#x2F;&#x2F;查看接口IP地址<br>    systemctl stop firewalld.service 	&#x2F;&#x2F;关闭防火墙服务<br>    systemctl disable firewalld.service &#x2F;&#x2F;关闭防火墙的开机自启<br>（2）远程连接到Centos8<br>    根据IP地址远程SSH连接到Centos8<br>    保存秘钥<br>    输入用户名和密码<br>（3）安装Dcoker环境<br>    ping baidu.com		&#x2F;&#x2F;保证虚拟机能访问外网，按ctrl+c停止ping<br>    cd &#x2F;etc&#x2F;yum.repos.d&#x2F;	&#x2F;&#x2F;进入yum源仓库</p>
-<pre><code>sed -i -e &quot;s|mirrorlist=|#mirrorlist=|g&quot; /etc/yum.repos.d/CentOS-*
-sed -i -e &quot;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&quot; /etc/yum.repos.d/CentOS-*
-//修改yum仓库内容，以便能访问到国外
+      <p>数据库系统概论学习笔记总结</p>
+<p>第三章 关系数据库标准语言mySQL</p>
+<p>一．模式的定义与删除</p>
+<p>\1. 定义模式</p>
+<p>在SQL中，模式定义语句如下:</p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE SCHEMA&lt;模式名&gt;AUTHORIZATION&lt;用户名&gt;;
 
-yum clean all	//清除仓库缓存
-yum list all	//列出仓库所有安装包
+（create schema&lt;模式名&gt;authorization&lt;用户名&gt;）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-cd /root 	//回到桌面
+<p>如果没有指定&lt;模式名&gt;，那么&lt;模式名&gt;隐含为&lt;用户名&gt;。</p>
+<p>要创建模式，调用该命令的用户必须拥有数据库管理员权限，或者获得了数据库管理员授予的CREATESCHEMA的权限。</p>
+<p>[例3.1]为用户WANG定义一个学生-课程模式S-T。</p>
+<p>CREATE SCHEMA”S-T”AUTHORIZATION WANG</p>
+<p>[例3.2]CREATE SCHEMAAUTHORIZATION WANG:该语句没有指</p>
+<p>定&lt;模式名&gt;，所以&lt;模式名&gt;隐含为用户名 WANG。</p>
+<p>[例3.3]为用户ZHANG 创建一个模式TEST，并且在其中定义一个表TAB1。</p>
+<p>CREATE SCHEMA TEST AUTHORIZATION ZHANG</p>
+<p>CREATE TABLE TAB1(COLI SMALLINT</p>
+<p>COL2 INT</p>
+<p>COL3 CHAR(20)</p>
+<p>COL4 NUMERIC(10,3)COL5 DECIMAL(5,2)</p>
+<p>）；</p>
+<p>\2. 删除模式</p>
+<pre class="line-numbers language-none"><code class="language-none">DROP SCHEMA&lt;模式名&gt;&lt;CASCADE|RESTRICT&gt;；
 
-yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
-//清除所有docker的环境
+（drop schema&lt;&gt;&lt;cascade|restrict）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-dnf install -y yum-utils device-mapper-persistent-data lvm2
-//安装docker所需依赖
+<p>删除：drop schema&lt;模式名&gt;&lt; cascade&gt; 删去模式同时删除所有对象</p>
+<p>​             &lt; restrict&gt;删去模式无法删去对象</p>
+<p>[例3.4]DROP SCHEMA ZHANG CASCADE；</p>
+<p>该语句删除了模式ZHANG，同时，该模式中已经定义的表TABI也被删除了</p>
+<p>二．基本表的定义、删除与修改</p>
+<p>\1. 定义基本表</p>
+<p>SQL语言使用CREATETABLE语句定义基本表，其基本格式如下:</p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE TABLE&lt;表名&gt;(&lt;列名&gt;&lt;数据类型&gt;[列级完整性约束条件]
 
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-//下载docker安装包
+[,&lt;列名&gt;&lt;数据类型&gt;[列级完整性约束条件]]
 
-dnf -y install docker-ce docker-ce-cli containerd.io
-//安装docer
+ ......
 
-dnf remove -y podman
-//移除podman
+[,&lt;表级完整性约束条件&gt;]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-dnf -y install --allowerasing docker-ce
-//继续安装docker
+<p>[例3.5]建立一个“学生”表Student。</p>
+<p>CREATE TABLE Student</p>
+<p>(Sno CHAR(9) PRIMARY KEY，&#x2F;<em>列级完整性约束条件，Sno是主码</em>&#x2F;</p>
+<p>Sname CHAR(20) UNIQUE，  &#x2F;<em>Sname取唯一值</em>&#x2F;</p>
+<p>Ssex CHAR(2)，</p>
+<p>Sage SMALLINT，</p>
+<p>Sdept CHAR(20)</p>
+<p> ）；</p>
+<p>[例3.6]建立一个“课程”表Course。</p>
+<p>CREATE TABLE Course</p>
+<p>(Cno CHAR(4)PRIMARY KEY， &#x2F;<em>列级完整性约束条件，Cno 是主码</em>&#x2F;</p>
+<p>Cname CHAR(40) NOT NULL，&#x2F;<em>列级完整性约束条件，Cname不能取空值</em>&#x2F;</p>
+<p>Cpno CHAR(4)，  &#x2F;<em>Cpno的含义是先修课</em>&#x2F;</p>
+<p>Ccredit SMALLINT，</p>
+<p>FOREIGN KEY(Cpno) REFERENCES Course(Cno)</p>
+<p>​      &#x2F;<em>表级完整性约束条件，Cpno是外码，被参照表是Course，被参照列是Cno</em>&#x2F;</p>
+<p>[例3.7]建立学生选课表SC。</p>
+<p>CREATE TABLE SC</p>
+<p>(Sno CHAR(9)，</p>
+<p>Cno CHAR(4)，</p>
+<p>Grade SMALLINT，</p>
+<p>PRIMARYKEY(Sno,Cno)， </p>
+<p>​       &#x2F;<em>主码由两个属性构成，必须作为表级完整性进行定义</em>&#x2F;</p>
+<p>FOREIGN KEY(Sno)REFERENCES Student(Sno),</p>
+<p>​      &#x2F;<em>表级完整性约束条件，Sno是外码，被参照表是Student</em>&#x2F;</p>
+<p>FOREIGN KEY(Cno) REFERENCES Course(Cno)</p>
+<p>​     &#x2F;<em>表级完整性约束条件，Cno 是外码，被参照表是Course</em>&#x2F;</p>
+<p>);</p>
+<p>\2. 数据类型</p>
+<p><img src="file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml28716\wps1.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml28716\wps2.jpg" alt="img"> </p>
+<p>\3. 模式与表</p>
+<p>  每一个基本表都属于某一个模式，一个模式包含多个基本表。当定义基本表时一般可以有三种方法定义它所属的模式。例如在例3.1中定义了一个学生-课程模式S-T。现在要在S-T中定义Student、Cource、SC等基本表。</p>
+<p>方法一，在表名中明显地给出模式名。</p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE TABLE&quot;S-T&quot;.Student(•••) ;&#x2F;*Student 所属的模式是S-T*&#x2F;
 
-systemctl start docker.service
-systemctl enable docker.service 
-systemctl start\stop\enable\disable\restart\status
-</code></pre>
-<p>配置WAF环境<br>1.上传文件 image.tar.gz(运行的底层逻辑镜像）<br>2.cat image.tar.gz | gzip -d | docker laod &#x2F;&#x2F;加载镜像<br>3.docker ps -a&#x2F;&#x2F;查看有无容器在运行<br>4.mkdir safeline&#x2F;&#x2F;创建文件夹<br>5.cd safeline&#x2F;&#x2F;查看文件夹<br>6.上传<br>（ll -a&#x2F;&#x2F;查看文件夹文件包含隐藏文件）</p>
-<p>echo “SAFELINE_DIR&#x3D;$safeline_path” &gt;&gt; .env<br>echo “IMAGE_TAG&#x3D;latest” &gt;&gt; .env<br>echo “MGT_PORT&#x3D;9443” &gt;&gt; .env<br>echo “POSTGRES_PASSWORD&#x3D;$(LC_ALL&#x3D;C tr -dc A-Za-z0-9 &lt;&#x2F;dev&#x2F;urandom | head -c32)” &gt;&gt; .env<br>echo “REDIS_PASSWORD&#x3D;$(LC_ALL&#x3D;C tr -dc A-Za-z0-9 &lt;&#x2F;dev&#x2F;urandom | head -c 32)”&gt;&gt; .env<br>echo “SUBNET_PREFIX&#x3D;169.254.0” &gt;&gt; .env</p>
+CREATE TABLE&quot;S-T&quot;.Course(•••);&#x2F;*Course 所属的模式是S-T*&#x2F;
+
+CREATE TABLE&quot;S-T&quot;.SC(•••); &#x2F;*SC所属的模式是S-T*&#x2F;
+
+ <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>方法二，在创建模式语句中同时创建表，如例3.3 所示。</p>
+<p>方法三，设置所属的模式，这样在创建表时表名中不必给出模式名当用户创建基本表(其他数据库对象也一样)时若没有指定模式，系统根据搜索路径search path)来确定该对象所属的模式。</p>
+<p>\4. 修改基本表</p>
+<p>  随着应用环境和应用需求的变化，有时需要修改已建立好的基本表。SQL 语言用ALTERTABLE语句修改基本表，其一般格式为</p>
+<pre class="line-numbers language-none"><code class="language-none">ALTER TABLE&lt;表名&gt; 
+
+[ADD [COLUMN] &lt;新列名&gt;&lt;数据类型&gt;[完整性约束]] &#x2F;*增加新列*&#x2F;
+
+[ADD &lt;表级完整性约束&gt;]
+
+[DROP [COLUMN]&lt;列名&gt;[CASCADE RESTRICT]] &#x2F;*删除列*&#x2F;
+
+[DROP CONSTRAINT&lt;完整性约束名&gt;[RESTRICT|CASCADE ]]
+
+[ALTER COLUMN&lt;列名&gt;&lt;数据类型&gt;]; &#x2F;*修改原有的列定义*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其中&lt;表名&gt;是要修改的基本表，ADD 子句用于增加新列、新的列级完整性约束条件和新的表级完整性约束条件。DROP COLUMN子句用于删除表中的列，如果指定了CASCADE短语，则自动删除引用了该列的其他对象，比如视图;如果指定了 RESTRICT 短语，则如果该列被其他对象引用，RDBMS将拒绝删除该列。DROPCONSTRAINT子句用于删除指定的完整性约束条件。ALTER COLUMN子句用于修改原有的列定义，包括修改列名和数据类型。</p>
+<p>[例3.8]向Student表增加“入学时间”列，其数据类型为日期型。ALTERTABLE Student ADD S entrance DATE;</p>
+<p>不论基本表中原来是否已有数据，新增加的列一律为空值。</p>
+<p>[例3.9] 将年龄的数据类型由字符型(假设原来的数据类型是字符型) 改为整数。</p>
+<p>ALTER TABLE Student ALTER COLUMN Sage INT;</p>
+<p>[例3.10]增加课程名称必须取唯一值的约束条件。</p>
+<p>ALTER TABLE Course ADD UNIQUE(Cname);</p>
+<p>\5. 删除基本表</p>
+<p>当某个基本表不再需要时，可以使用DROPTABLE语句删除它。其一般格式为:</p>
+<pre class="line-numbers language-none"><code class="language-none">DROP TABLE &lt;表名&gt; [RESTRICT|CASCADE]；<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>若选择restrict，则该表的删除有限制条件。</p>
+<p>若选择cascade，则该表的删除没有限制条件。</p>
+<p>[例3.11]删除Student 表。</p>
+<p>DROP TABLE Student CASCADE;</p>
+<p>基本表定义一旦被删除，不仅表中的数据和此表的定义将被删除，而且此表上建立的索引、触发器等对象一般也都将被删除。有的关系数据库管理系统还会同时删除在此表上建立的视图。如果欲删除的基本表被其他基本表所引用，则这些表也可能被删除。例如 SC表通过外码Sno引用Student，则执行例 3.11后Student 表被删除，SC也被级联删除。因此执行删除基本表的操作一定要格外小心。</p>
+<p>[例3.12] 若表上建有视图，选择 RESTRICT 时表不能删除;选择CASCADE 时可以删除表，视图也自动被删除。</p>
+<p>CREATE VIEW IS_Student &#x2F;<em>Student表上建立视图</em>&#x2F;</p>
+<p>AS</p>
+<p>SELECT Sno，Sname，Sage</p>
+<p>FROM Student</p>
+<p>WHERE Sdept&#x3D;’IS’;</p>
+<p>DROP TABLE Student RESTRICT;&#x2F;<em>删除Student表</em>&#x2F;</p>
+<p>–ERROR: cannot drop table Student because other objects depend on it</p>
+<p>&#x2F;<em>系统返回错误信息，存在依赖该表的对象，此表不能被删除</em>&#x2F;</p>
+<p>DROP TABLE Student CASCADE;&#x2F;<em>删除Student 表</em>&#x2F;</p>
+<p>–NOTICE: drop cascades to view IS_Student</p>
+<p>&#x2F;<em>系统返回提示，此表上的视图也被删除</em>&#x2F;</p>
+<p>SELECT *FROM IS_Student;</p>
+<p>–ERROR: relation “IS_Student “ does not exist</p>
+<p>三．索引的建立与删除</p>
+<p>\1. 建立索引</p>
+<p>在SQL语言中，建立索引使用CREATEINDEX语句，其一般格式为：</p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE [UNIQUE] [CLUSTER] INDEX&lt;索引名&gt;
+
+ON&lt;表名&gt;(&lt;列名&gt; [&lt;次序&gt;] [，&lt;列名&gt;[&lt;次序&gt;]]•••);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>其中，&lt;表名&gt;是要建索引的基本表的名字。索引可以建立在该表的一列或多列上，各列名之间用逗号分隔。每个&lt;列名&gt;后面还可以用&lt;次序&gt;指定索引值的排列次序，可选ASC(升序)或DESC(降序)，默认值为 ASC。</p>
+<p>[例3.13]为学生-课程数据库中的 Student、Course和SC三个表建立索引。其中Student 表按学号升序建唯一索引，Course </p>
+<p>表按课程号升序建唯一索引，SC 表按学号升序和课程号降序建唯一索引。</p>
+<p>CREATE UNIQUE INDEX Stusno ON Student(Sno);</p>
+<p>CREATE UNIQUE INDEX Coucno ON Course(Cno);</p>
+<p>CREATE UNIQUE INDEX SCno ON SC(Sno ASC,Cno DESC);</p>
+<p>\2. 修改索引</p>
+<pre class="line-numbers language-none"><code class="language-none">ALTER INDEX &lt;旧索引名&gt; RENAME TO&lt;新索引名&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>[例3.14]将SC表的SCno索引名改为SCSno。</p>
+<p>ALTER INDEX SCno RENAME TO SCSno:</p>
+<p>3.删除索引</p>
+<p>索引一经建立就由系统使用和维护，不需用户干预。建立索引是为了减少查询操作的间，但如果数据增、删、改频繁，系统会花费许多时间来维护索引，从而降低了查询效这时可以删除一些不必要的索引。</p>
+<p>在SQL中，删除索引使用DROPINDEX语句，其一般格式为：</p>
+<pre class="line-numbers language-none"><code class="language-none">DROP INDEX&lt;索引名&gt;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>[例3.15]删除Student 表的 Stusname 索引。</p>
+<p>DROP INDEX Stusname;</p>
+<p>删除索引时，系统会同时从数据字典中删去有关该索引的描述。</p>
 
     </article>
     
     <div class="read-nums">
       <!-- id 将作为查询条件 -->
-      <span id="2023/07/09/2023润田暑假夏令营2023.7.9/" class="leancloud_visitors" data-flag-title="Your Article Title">
+      <span id="2023/09/24/数据库系统概述笔记/" class="leancloud_visitors" data-flag-title="Your Article Title">
         <em class="post-meta-item-text">浏览量</em>
         <i class="leancloud-visitors-count"></i>
       </span>
@@ -454,16 +574,11 @@ systemctl start\stop\enable\disable\restart\status
       </div>
       
         <div class="catelogue catelogue-2">
-          
-            <p>
-              <span>上一篇：</span>
-              <a href="/2023/09/13/python（第1期）核心笔记/">python学习（第1期）核心笔记</a>
-            </p>
            
           
             <p>
               <span>下一篇</span>
-              <a href="/2023/05/20/hello-world/">Hello World</a>
+              <a href="/2023/09/19/key1（9.18-9.19)/">答案</a>
             </p>
           
         </div>
@@ -486,7 +601,7 @@ systemctl start\stop\enable\disable\restart\status
     recordIP: config.recordIP,
     visitor: config.visitor,
     enableQQ: config.enableQQ,
-    path: '2023/07/09/2023润田暑假夏令营2023.7.9/'
+    path: '2023/09/24/数据库系统概述笔记/'
   })
 </script>
 
