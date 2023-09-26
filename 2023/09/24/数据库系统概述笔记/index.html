@@ -193,7 +193,7 @@
   const ipt = document.querySelector('#search-input')
   const btn = document.querySelector('#search-btn')
   const layer = document.querySelector('#search-layer')
-  const posts = JSON.parse(`[{"title":"润天暑期夏令营7.9","path":"2023/07/09/2023润田暑假夏令营2023.7.9/"},{"title":"Hello World","path":"2023/05/20/hello-world/"},{"title":"python学习（第1期）核心笔记","path":"2023/09/13/python（第1期）核心笔记/"},{"title":"XSS蓝莲花实操--润天夏令营2023","path":"2023/09/13/XSS蓝莲花实操--润天夏令营/"},{"title":"答案","path":"2023/09/19/key1（9.18-9.19)/"},{"title":"我的个人简介","path":"2023/05/20/个人简介/"},{"title":"数据库系统概述笔记","path":"2023/09/24/数据库系统概述笔记/"},{"title":"编程训练","path":"2023/09/18/编程训练/"},{"title":"英语六级学习","path":"2023/09/17/英语六级词汇/"},{"title":"计算机操作系统课程笔记","path":"2023/09/19/计算机操作系统课程笔记/"}]`)
+  const posts = JSON.parse(`[{"title":"润天暑期夏令营7.9","path":"2023/07/09/2023润田暑假夏令营2023.7.9/"},{"title":"XSS蓝莲花实操--润天夏令营2023","path":"2023/09/13/XSS蓝莲花实操--润天夏令营/"},{"title":"答案","path":"2023/09/19/key1（9.18-9.19)/"},{"title":"Hello World","path":"2023/05/20/hello-world/"},{"title":"我的个人简介","path":"2023/05/20/个人简介/"},{"title":"python学习（第1期）核心笔记","path":"2023/09/13/python（第1期）核心笔记/"},{"title":"数据库系统概述笔记","path":"2023/09/24/数据库系统概述笔记/"},{"title":"编程训练","path":"2023/09/18/编程训练/"},{"title":"英语六级学习","path":"2023/09/17/英语六级词汇/"},{"title":"计算机操作系统课程笔记","path":"2023/09/19/计算机操作系统课程笔记/"}]`)
   ipt.addEventListener('keyup', e => {
     if (e.key === 'Enter') {
       handleSearch()
@@ -335,7 +335,7 @@
       </p>
       <p class="main-left--subtitle">
         <span>上线时间：</span>
-        <span>128天</span>
+        <span>130天</span>
       </p>
       <p class="main-left--subtitle">
         <span>当前版本：</span>
@@ -398,10 +398,8 @@ pre:active {
 <p>一．模式的定义与删除</p>
 <p>\1. 定义模式</p>
 <p>在SQL中，模式定义语句如下:</p>
-<pre class="line-numbers language-none"><code class="language-none">CREATE SCHEMA&lt;模式名&gt;AUTHORIZATION&lt;用户名&gt;;
-
-（create schema&lt;模式名&gt;authorization&lt;用户名&gt;）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<p>CREATE SCHEMA&lt;模式名&gt;AUTHORIZATION&lt;用户名&gt;;</p>
+<p>（create schema&lt;模式名&gt;authorization&lt;用户名&gt;）</p>
 <p>如果没有指定&lt;模式名&gt;，那么&lt;模式名&gt;隐含为&lt;用户名&gt;。</p>
 <p>要创建模式，调用该命令的用户必须拥有数据库管理员权限，或者获得了数据库管理员授予的CREATESCHEMA的权限。</p>
 <p>[例3.1]为用户WANG定义一个学生-课程模式S-T。</p>
@@ -416,10 +414,8 @@ pre:active {
 <p>COL4 NUMERIC(10,3)COL5 DECIMAL(5,2)</p>
 <p>）；</p>
 <p>\2. 删除模式</p>
-<pre class="line-numbers language-none"><code class="language-none">DROP SCHEMA&lt;模式名&gt;&lt;CASCADE|RESTRICT&gt;；
-
-（drop schema&lt;&gt;&lt;cascade|restrict）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<p>DROP SCHEMA&lt;模式名&gt;&lt;CASCADE|RESTRICT&gt;；</p>
+<p>（drop schema&lt;&gt;&lt;cascade|restrict）</p>
 <p>删除：drop schema&lt;模式名&gt;&lt; cascade&gt; 删去模式同时删除所有对象</p>
 <p>​             &lt; restrict&gt;删去模式无法删去对象</p>
 <p>[例3.4]DROP SCHEMA ZHANG CASCADE；</p>
@@ -427,14 +423,10 @@ pre:active {
 <p>二．基本表的定义、删除与修改</p>
 <p>\1. 定义基本表</p>
 <p>SQL语言使用CREATETABLE语句定义基本表，其基本格式如下:</p>
-<pre class="line-numbers language-none"><code class="language-none">CREATE TABLE&lt;表名&gt;(&lt;列名&gt;&lt;数据类型&gt;[列级完整性约束条件]
-
-[,&lt;列名&gt;&lt;数据类型&gt;[列级完整性约束条件]]
-
- ......
-
-[,&lt;表级完整性约束条件&gt;]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<p>CREATE TABLE&lt;表名&gt;(&lt;列名&gt;&lt;数据类型&gt;[列级完整性约束条件]</p>
+<p>[,&lt;列名&gt;&lt;数据类型&gt;[列级完整性约束条件]]</p>
+<p> ……</p>
+<p>[,&lt;表级完整性约束条件&gt;]);</p>
 <p>[例3.5]建立一个“学生”表Student。</p>
 <p>CREATE TABLE Student</p>
 <p>(Sno CHAR(9) PRIMARY KEY，&#x2F;<em>列级完整性约束条件，Sno是主码</em>&#x2F;</p>
@@ -450,49 +442,112 @@ pre:active {
 <p>Cpno CHAR(4)，  &#x2F;<em>Cpno的含义是先修课</em>&#x2F;</p>
 <p>Ccredit SMALLINT，</p>
 <p>FOREIGN KEY(Cpno) REFERENCES Course(Cno)</p>
-<p>​      &#x2F;<em>表级完整性约束条件，Cpno是外码，被参照表是Course，被参照列是Cno</em>&#x2F;</p>
+<p>&#x2F;<em>表级完整性约束条件，Cpno是外码，被参照表是Course，被参照列是Cno</em>&#x2F;</p>
 <p>[例3.7]建立学生选课表SC。</p>
 <p>CREATE TABLE SC</p>
 <p>(Sno CHAR(9)，</p>
 <p>Cno CHAR(4)，</p>
 <p>Grade SMALLINT，</p>
 <p>PRIMARYKEY(Sno,Cno)， </p>
-<p>​       &#x2F;<em>主码由两个属性构成，必须作为表级完整性进行定义</em>&#x2F;</p>
+<p>&#x2F;<em>主码由两个属性构成，必须作为表级完整性进行定义</em>&#x2F;</p>
 <p>FOREIGN KEY(Sno)REFERENCES Student(Sno),</p>
-<p>​      &#x2F;<em>表级完整性约束条件，Sno是外码，被参照表是Student</em>&#x2F;</p>
+<p>&#x2F;<em>表级完整性约束条件，Sno是外码，被参照表是Student</em>&#x2F;</p>
 <p>FOREIGN KEY(Cno) REFERENCES Course(Cno)</p>
-<p>​     &#x2F;<em>表级完整性约束条件，Cno 是外码，被参照表是Course</em>&#x2F;</p>
+<p>&#x2F;<em>表级完整性约束条件，Cno 是外码，被参照表是Course</em>&#x2F;</p>
 <p>);</p>
 <p>\2. 数据类型</p>
-<p><img src="file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml28716\wps1.jpg" alt="img"> </p>
-<p><img src="file:///C:\Users\ADMINI~1\AppData\Local\Temp\ksohtml28716\wps2.jpg" alt="img"> </p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CHAR(n),CHARACTER(n)</td>
+<td>长度为n的定长字符串</td>
+</tr>
+<tr>
+<td>VARCHAR(n), CHARACTERVARYING(n)</td>
+<td>最大长度为n的变长字符串</td>
+</tr>
+<tr>
+<td>CLOB</td>
+<td>字符串大对象</td>
+</tr>
+<tr>
+<td>BLOB</td>
+<td>二进制大对象</td>
+</tr>
+<tr>
+<td>INT，INTEGER</td>
+<td>长整数（4字节）</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>短整数（2字节）</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>大整数（8字节）</td>
+</tr>
+<tr>
+<td>NUMERIC(p，d)</td>
+<td>定点数，由p位数字（不包括符号、小数点）组成，小数后面有d位数字</td>
+</tr>
+<tr>
+<td>DECIMAL(p, d), DEC(p, d)</td>
+<td>同NUMERIC</td>
+</tr>
+<tr>
+<td>REAL</td>
+<td>取决于机器精度的单精度浮点数</td>
+</tr>
+<tr>
+<td>DOUBLE PRECISION</td>
+<td>取决于机器精度的双精度浮点数</td>
+</tr>
+<tr>
+<td>FLOAT(n)</td>
+<td>可选精度的浮点数，精度至少为n位数字</td>
+</tr>
+<tr>
+<td>BOOLEAN</td>
+<td>逻辑布尔量</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>日期，包含年、月、日，格式为YYYY-MM-DD</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>时间，包含一日的时、分、秒，格式为HH:MM:SS</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>时间戳类型</td>
+</tr>
+<tr>
+<td>INTERVAL</td>
+<td>时间间隔类型</td>
+</tr>
+</tbody></table>
 <p>\3. 模式与表</p>
-<p>  每一个基本表都属于某一个模式，一个模式包含多个基本表。当定义基本表时一般可以有三种方法定义它所属的模式。例如在例3.1中定义了一个学生-课程模式S-T。现在要在S-T中定义Student、Cource、SC等基本表。</p>
+<p>每一个基本表都属于某一个模式，一个模式包含多个基本表。当定义基本表时一般可以有三种方法定义它所属的模式。例如在例3.1中定义了一个学生-课程模式S-T。现在要在S-T中定义Student、Cource、SC等基本表。</p>
 <p>方法一，在表名中明显地给出模式名。</p>
-<pre class="line-numbers language-none"><code class="language-none">CREATE TABLE&quot;S-T&quot;.Student(•••) ;&#x2F;*Student 所属的模式是S-T*&#x2F;
-
-CREATE TABLE&quot;S-T&quot;.Course(•••);&#x2F;*Course 所属的模式是S-T*&#x2F;
-
-CREATE TABLE&quot;S-T&quot;.SC(•••); &#x2F;*SC所属的模式是S-T*&#x2F;
-
- <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<p>CREATE TABLE”S-T”.Student(•••) ;&#x2F;<em>Student 所属的模式是S-T</em>&#x2F;</p>
+<p>CREATE TABLE”S-T”.Course(•••);&#x2F;<em>Course 所属的模式是S-T</em>&#x2F;</p>
+<p>CREATE TABLE”S-T”.SC(•••); &#x2F;<em>SC所属的模式是S-T</em>&#x2F;</p>
 <p>方法二，在创建模式语句中同时创建表，如例3.3 所示。</p>
 <p>方法三，设置所属的模式，这样在创建表时表名中不必给出模式名当用户创建基本表(其他数据库对象也一样)时若没有指定模式，系统根据搜索路径search path)来确定该对象所属的模式。</p>
 <p>\4. 修改基本表</p>
-<p>  随着应用环境和应用需求的变化，有时需要修改已建立好的基本表。SQL 语言用ALTERTABLE语句修改基本表，其一般格式为</p>
-<pre class="line-numbers language-none"><code class="language-none">ALTER TABLE&lt;表名&gt; 
-
-[ADD [COLUMN] &lt;新列名&gt;&lt;数据类型&gt;[完整性约束]] &#x2F;*增加新列*&#x2F;
-
-[ADD &lt;表级完整性约束&gt;]
-
-[DROP [COLUMN]&lt;列名&gt;[CASCADE RESTRICT]] &#x2F;*删除列*&#x2F;
-
-[DROP CONSTRAINT&lt;完整性约束名&gt;[RESTRICT|CASCADE ]]
-
-[ALTER COLUMN&lt;列名&gt;&lt;数据类型&gt;]; &#x2F;*修改原有的列定义*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<p>随着应用环境和应用需求的变化，有时需要修改已建立好的基本表。SQL 语言用ALTERTABLE语句修改基本表，其一般格式为</p>
+<p>ALTER TABLE&lt;表名&gt; </p>
+<p>[ADD [COLUMN] &lt;新列名&gt;&lt;数据类型&gt;[完整性约束]] &#x2F;<em>增加新列</em>&#x2F;</p>
+<p>[ADD &lt;表级完整性约束&gt;]</p>
+<p>[DROP [COLUMN]&lt;列名&gt;[CASCADE RESTRICT]] &#x2F;<em>删除列</em>&#x2F;</p>
+<p>[DROP CONSTRAINT&lt;完整性约束名&gt;[RESTRICT|CASCADE ]]</p>
+<p>[ALTER COLUMN&lt;列名&gt;&lt;数据类型&gt;]; &#x2F;<em>修改原有的列定义</em>&#x2F;</p>
 <p>其中&lt;表名&gt;是要修改的基本表，ADD 子句用于增加新列、新的列级完整性约束条件和新的表级完整性约束条件。DROP COLUMN子句用于删除表中的列，如果指定了CASCADE短语，则自动删除引用了该列的其他对象，比如视图;如果指定了 RESTRICT 短语，则如果该列被其他对象引用，RDBMS将拒绝删除该列。DROPCONSTRAINT子句用于删除指定的完整性约束条件。ALTER COLUMN子句用于修改原有的列定义，包括修改列名和数据类型。</p>
 <p>[例3.8]向Student表增加“入学时间”列，其数据类型为日期型。ALTERTABLE Student ADD S entrance DATE;</p>
 <p>不论基本表中原来是否已有数据，新增加的列一律为空值。</p>
@@ -502,8 +557,7 @@ CREATE TABLE&quot;S-T&quot;.SC(•••); &#x2F;*SC所属的模式是S-T*&#x2F;
 <p>ALTER TABLE Course ADD UNIQUE(Cname);</p>
 <p>\5. 删除基本表</p>
 <p>当某个基本表不再需要时，可以使用DROPTABLE语句删除它。其一般格式为:</p>
-<pre class="line-numbers language-none"><code class="language-none">DROP TABLE &lt;表名&gt; [RESTRICT|CASCADE]；<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<p>DROP TABLE &lt;表名&gt; [RESTRICT|CASCADE]；</p>
 <p>若选择restrict，则该表的删除有限制条件。</p>
 <p>若选择cascade，则该表的删除没有限制条件。</p>
 <p>[例3.11]删除Student 表。</p>
@@ -526,26 +580,20 @@ CREATE TABLE&quot;S-T&quot;.SC(•••); &#x2F;*SC所属的模式是S-T*&#x2F;
 <p>三．索引的建立与删除</p>
 <p>\1. 建立索引</p>
 <p>在SQL语言中，建立索引使用CREATEINDEX语句，其一般格式为：</p>
-<pre class="line-numbers language-none"><code class="language-none">CREATE [UNIQUE] [CLUSTER] INDEX&lt;索引名&gt;
-
-ON&lt;表名&gt;(&lt;列名&gt; [&lt;次序&gt;] [，&lt;列名&gt;[&lt;次序&gt;]]•••);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<p>CREATE [UNIQUE] [CLUSTER] INDEX&lt;索引名&gt;</p>
+<p>ON&lt;表名&gt;(&lt;列名&gt; [&lt;次序&gt;] [，&lt;列名&gt;[&lt;次序&gt;]]•••);</p>
 <p>其中，&lt;表名&gt;是要建索引的基本表的名字。索引可以建立在该表的一列或多列上，各列名之间用逗号分隔。每个&lt;列名&gt;后面还可以用&lt;次序&gt;指定索引值的排列次序，可选ASC(升序)或DESC(降序)，默认值为 ASC。</p>
-<p>[例3.13]为学生-课程数据库中的 Student、Course和SC三个表建立索引。其中Student 表按学号升序建唯一索引，Course </p>
-<p>表按课程号升序建唯一索引，SC 表按学号升序和课程号降序建唯一索引。</p>
+<p>[例3.13]为学生-课程数据库中的 Student、Course和SC三个表建立索引。其中Student 表按学号升序建唯一索引，Course 表按课程号升序建唯一索引，SC 表按学号升序和课程号降序建唯一索引。</p>
 <p>CREATE UNIQUE INDEX Stusno ON Student(Sno);</p>
 <p>CREATE UNIQUE INDEX Coucno ON Course(Cno);</p>
 <p>CREATE UNIQUE INDEX SCno ON SC(Sno ASC,Cno DESC);</p>
 <p>\2. 修改索引</p>
-<pre class="line-numbers language-none"><code class="language-none">ALTER INDEX &lt;旧索引名&gt; RENAME TO&lt;新索引名&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<p>ALTER INDEX &lt;旧索引名&gt; RENAME TO&lt;新索引名&gt;</p>
 <p>[例3.14]将SC表的SCno索引名改为SCSno。</p>
 <p>ALTER INDEX SCno RENAME TO SCSno:</p>
 <p>3.删除索引</p>
 <p>索引一经建立就由系统使用和维护，不需用户干预。建立索引是为了减少查询操作的间，但如果数据增、删、改频繁，系统会花费许多时间来维护索引，从而降低了查询效这时可以删除一些不必要的索引。</p>
-<p>在SQL中，删除索引使用DROPINDEX语句，其一般格式为：</p>
-<pre class="line-numbers language-none"><code class="language-none">DROP INDEX&lt;索引名&gt;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<p>在SQL中，删除索引使用DROPINDEX语句，其一般格式为：DROPINDEX&lt;索引名&gt;;</p>
 <p>[例3.15]删除Student 表的 Stusname 索引。</p>
 <p>DROP INDEX Stusname;</p>
 <p>删除索引时，系统会同时从数据字典中删去有关该索引的描述。</p>
